@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:clean_archs/domain/auth/user.entity.dart';
+import 'package:clean_archs/domain/auth/value_objects/unique_id.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
@@ -71,4 +73,20 @@ class FirebaseAuthFacade implements IAuthFacade {
     // TODO: implement signInwithGoogle
     throw UnimplementedError();
   }
+
+  @override
+  Future<Option<UserEntitiy>> getCurrentUser() async {
+    User? firebaseUser = await _auth.currentUser;
+    return optionOf(firebaseUser?.toUserEntity());
+  }
+
+  @override
+  Future<void> signout() {
+    // TODO: implement signout
+    throw UnimplementedError();
+  }
+}
+
+extension on User {
+  UserEntitiy toUserEntity() => UserEntitiy(uniqueID: UniqueId.fromUniqueId(uid));
 }

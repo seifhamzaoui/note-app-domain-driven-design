@@ -3,6 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'user.entity.freezed.dart';
 
 @freezed
-abstract class User with _$User {
-  const factory User({required UniqueId uniqueID}) = _User;
+abstract class UserEntitiy with _$UserEntitiy {
+  const factory UserEntitiy({required UniqueId uniqueID}) = _UserEntitiy;
 }

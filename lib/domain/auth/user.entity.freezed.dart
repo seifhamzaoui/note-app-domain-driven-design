@@ -15,27 +15,29 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$User {
+mixin _$UserEntitiy {
   UniqueId get uniqueID => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserEntitiyCopyWith<UserEntitiy> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
+abstract class $UserEntitiyCopyWith<$Res> {
+  factory $UserEntitiyCopyWith(
+          UserEntitiy value, $Res Function(UserEntitiy) then) =
+      _$UserEntitiyCopyWithImpl<$Res>;
   $Res call({UniqueId uniqueID});
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserEntitiyCopyWithImpl<$Res> implements $UserEntitiyCopyWith<$Res> {
+  _$UserEntitiyCopyWithImpl(this._value, this._then);
 
-  final User _value;
+  final UserEntitiy _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Res Function(UserEntitiy) _then;
 
   @override
   $Res call({
@@ -51,27 +53,30 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$_UserEntitiyCopyWith<$Res>
+    implements $UserEntitiyCopyWith<$Res> {
+  factory _$$_UserEntitiyCopyWith(
+          _$_UserEntitiy value, $Res Function(_$_UserEntitiy) then) =
+      __$$_UserEntitiyCopyWithImpl<$Res>;
   @override
   $Res call({UniqueId uniqueID});
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, (v) => _then(v as _$_User));
+class __$$_UserEntitiyCopyWithImpl<$Res> extends _$UserEntitiyCopyWithImpl<$Res>
+    implements _$$_UserEntitiyCopyWith<$Res> {
+  __$$_UserEntitiyCopyWithImpl(
+      _$_UserEntitiy _value, $Res Function(_$_UserEntitiy) _then)
+      : super(_value, (v) => _then(v as _$_UserEntitiy));
 
   @override
-  _$_User get _value => super._value as _$_User;
+  _$_UserEntitiy get _value => super._value as _$_UserEntitiy;
 
   @override
   $Res call({
     Object? uniqueID = freezed,
   }) {
-    return _then(_$_User(
+    return _then(_$_UserEntitiy(
       uniqueID: uniqueID == freezed
           ? _value.uniqueID
           : uniqueID // ignore: cast_nullable_to_non_nullable
@@ -82,22 +87,22 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_User implements _User {
-  const _$_User({required this.uniqueID});
+class _$_UserEntitiy implements _UserEntitiy {
+  const _$_UserEntitiy({required this.uniqueID});
 
   @override
   final UniqueId uniqueID;
 
   @override
   String toString() {
-    return 'User(uniqueID: $uniqueID)';
+    return 'UserEntitiy(uniqueID: $uniqueID)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
+            other is _$_UserEntitiy &&
             const DeepCollectionEquality().equals(other.uniqueID, uniqueID));
   }
 
@@ -107,16 +112,18 @@ class _$_User implements _User {
 
   @JsonKey(ignore: true)
   @override
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$_UserEntitiyCopyWith<_$_UserEntitiy> get copyWith =>
+      __$$_UserEntitiyCopyWithImpl<_$_UserEntitiy>(this, _$identity);
 }
 
-abstract class _User implements User {
-  const factory _User({required final UniqueId uniqueID}) = _$_User;
+abstract class _UserEntitiy implements UserEntitiy {
+  const factory _UserEntitiy({required final UniqueId uniqueID}) =
+      _$_UserEntitiy;
 
   @override
   UniqueId get uniqueID => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserEntitiyCopyWith<_$_UserEntitiy> get copyWith =>
+      throw _privateConstructorUsedError;
 }
