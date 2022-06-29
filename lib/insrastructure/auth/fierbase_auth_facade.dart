@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import '../core/helpers/extension.dart';
 import 'package:clean_archs/domain/auth/value_objects/Email_adress.dart';
 import 'package:clean_archs/domain/auth/value_objects/password.dart';
 import 'package:clean_archs/domain/core/error/auth_failures.dart';
@@ -84,8 +84,4 @@ class FirebaseAuthFacade implements IAuthFacade {
   Future<void> signout() {
     return _auth.signOut();
   }
-}
-
-extension on User {
-  UserEntitiy toUserEntity() => UserEntitiy(uniqueID: UniqueId.fromUniqueId(uid));
 }
