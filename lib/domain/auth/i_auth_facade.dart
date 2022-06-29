@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
 abstract class IAuthFacade {
-  Future<Option<User>> getCurrentUser();
+  Stream<Option<UserEntitiy>> getCurrentUser();
   Future<Either<AuthFailure, Unit>> signInwithEmailAndPassword({
     required EmailAdress email,
     required Password password,
