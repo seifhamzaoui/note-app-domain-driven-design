@@ -70,20 +70,19 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, Unit>> signInwithGoogle() {
-    // TODO: implement signInwithGoogle
     throw UnimplementedError();
   }
 
   @override
-  Future<Option<UserEntitiy>> getCurrentUser() async {
-    User? firebaseUser = await _auth.currentUser;
-    return optionOf(firebaseUser?.toUserEntity());
+  Stream<Option<UserEntitiy>> getCurrentUser() {
+    return _auth.authStateChanges().map((firebaseUser) {
+      return optionOf(firebaseUser?.toUserEntity());
+    });
   }
 
   @override
   Future<void> signout() {
-    // TODO: implement signout
-    throw UnimplementedError();
+    return _auth.signOut();
   }
 }
 
