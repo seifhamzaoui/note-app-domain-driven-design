@@ -29,11 +29,11 @@ class FirebaseAuthFacade implements IAuthFacade {
     required EmailAdress email,
     required Password password,
   }) async {
-    final emailStr = email.value
-        .fold((l) => throw InvalidEmailAndPasswordErrot('Invalid email or password'), (r) => r);
-    final passwordStr = password.value
-        .fold((l) => throw InvalidEmailAndPasswordErrot('Invalid email or password'), (r) => r);
     try {
+      final emailStr = email.value
+          .fold((l) => throw InvalidEmailAndPasswordErrot('Invalid email or password'), (r) => r);
+      final passwordStr = password.value
+          .fold((l) => throw InvalidEmailAndPasswordErrot('Invalid email or password'), (r) => r);
       await _auth.createUserWithEmailAndPassword(email: emailStr, password: passwordStr);
       return right(unit);
     } on FirebaseAuthException catch (e) {

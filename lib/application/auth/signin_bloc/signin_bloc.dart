@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:clean_archs/domain/auth/i_auth_facade.dart';
+import 'package:clean_archs/domain/auth/user.entity.dart';
 import 'package:clean_archs/domain/auth/value_objects/Email_adress.dart';
 import 'package:clean_archs/domain/auth/value_objects/password.dart';
 import 'package:clean_archs/domain/core/error/auth_failures.dart';
@@ -16,6 +17,9 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
   final IAuthFacade _authFacade;
 
   SigninBloc(this._authFacade) : super(SigninState.initial()) {
+    _authFacade.getCurrentUser().listen((user) {
+      emit(state.copyWith());
+    });
     on<SigninEvent>((event, emit) {
       event.map(
         emailChanged: handleEmailChanged,
