@@ -75,7 +75,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
   @override
   Stream<Option<UserEntitiy>> getCurrentUser() {
-    return _auth.authStateChanges().map((firebaseUser) {
+    return _auth.authStateChanges().map((User? firebaseUser) {
       return optionOf(firebaseUser?.toUserEntity());
     });
   }
