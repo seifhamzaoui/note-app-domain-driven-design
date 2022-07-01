@@ -121,7 +121,9 @@ class SigninForm extends StatelessWidget {
             ),
             if (BlocProvider.of<SigninBloc>(context).state.isLoading)
               const Center(
-                child: CircularProgressIndicator(),
+                child: LinearProgressIndicator(
+                  value: null,
+                ),
               ),
           ],
         ),

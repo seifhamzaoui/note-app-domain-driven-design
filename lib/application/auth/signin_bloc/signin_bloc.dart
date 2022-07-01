@@ -66,7 +66,7 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
 
       emit(state.copyWith(
           authResponsOption: Some(succesorFailure), isLoading: false, showErrors: true));
-    } else
+    } else {
       emit(
         state.copyWith(
           authResponsOption: none(),
@@ -74,5 +74,6 @@ class SigninBloc extends Bloc<SigninEvent, SigninState> {
           showErrors: true,
         ),
       );
+    }
   }
 }

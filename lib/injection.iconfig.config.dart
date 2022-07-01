@@ -27,7 +27,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.lazySingleton<_i5.IAuthFacade>(() =>
       _i6.FirebaseAuthFacade(get<_i4.GoogleSignIn>(), get<_i3.FirebaseAuth>()));
   gh.factory<_i7.SigninBloc>(() => _i7.SigninBloc(get<_i5.IAuthFacade>()));
-  gh.factory<_i8.AuthStateBloc>(
+  gh.lazySingleton<_i8.AuthStateBloc>(
       () => _i8.AuthStateBloc(get<_i5.IAuthFacade>()));
   return get;
 }
