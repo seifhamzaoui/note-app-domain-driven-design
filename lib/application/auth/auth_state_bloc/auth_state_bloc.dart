@@ -13,22 +13,21 @@ part 'auth_state_state.dart';
 
 @Injectable()
 class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
-  IAuthFacade _authFacade;
+  final IAuthFacade _authFacade;
   AuthStateBloc(
     this._authFacade,
   ) : super(AuthStateState.initial()) {
-    _authFacade.getCurrentUser().listen((currentUserOption) {
-      emit(state.copyWith(currentUser: currentUserOption));
-    });
     on<AuthStateEvent>(((event, emit) async {
-      event.map(
-        signOut: (e) async {
-          await _authFacade.signout();
-          emit(state.copyWith(
-            currentUser: none(),
-          ));
-        },
-      );
+      event.map(signOut: (e) async {
+        await _authFacade.signout();
+        emit(state.copyWith(
+          currentUser: none(),
+        ));
+      }, started: (_) {
+        _authFacade.getCurrentUser().listen((currentUserOption) {
+          emit(state.copyWith(currentUser: currentUserOption));
+        });
+      });
     }));
   }
 }
