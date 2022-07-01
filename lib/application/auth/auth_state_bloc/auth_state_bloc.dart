@@ -20,11 +20,15 @@ class AuthStateBloc extends Bloc<AuthStateEvent, AuthStateState> {
     _authFacade.getCurrentUser().listen((currentUserOption) {
       emit(state.copyWith(currentUser: currentUserOption));
     });
-    on<AuthStateEvent>(((event, emit) {
-      event.map(signOut: (e) async {
-        await _authFacade.signout();
-        emit(state.copyWith(currentUser: none()));
-      });
+    on<AuthStateEvent>(((event, emit) async {
+      event.map(
+        signOut: (e) async {
+          await _authFacade.signout();
+          emit(state.copyWith(
+            currentUser: none(),
+          ));
+        },
+      );
     }));
   }
 }
