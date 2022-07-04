@@ -6,7 +6,7 @@ import '../../core/validations/validate_value_objects.dart';
 import '../../core/value_objects.dart';
 
 class EmailAdress extends ValueObject<String> {
-  Either<ValueFailure, String> value;
+  Either<ValueFailure<String>, String> value;
 
   factory EmailAdress(String input) {
     return EmailAdress._(value: validateEmail(input));

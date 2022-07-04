@@ -4,7 +4,7 @@ import 'package:clean_archs/domain/core/value_objects.dart';
 import 'package:dartz/dartz.dart';
 
 class Password extends ValueObject<String> {
-  Either<ValueFailure, String> value;
+  Either<ValueFailure<String>, String> value;
 
   factory Password(String inputPassword) {
     return Password._(value: validatePassword(inputPassword));

@@ -2,7 +2,7 @@ import 'package:clean_archs/domain/core/error/Valuefailure.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ValueObject<T> {
-  Either<ValueFailure, T> get value;
+  Either<ValueFailure<T>, T> get value;
   const ValueObject();
   @override
   bool operator ==(Object other) {

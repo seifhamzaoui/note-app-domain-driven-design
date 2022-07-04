@@ -7,7 +7,7 @@ import 'package:clean_archs/domain/core/value_objects.dart';
 import 'package:uuid/uuid.dart';
 
 class UniqueId extends ValueObject<String> {
-  final Either<ValueFailure, String> value;
+  final Either<ValueFailure<String>, String> value;
   factory UniqueId() {
     return UniqueId._(value: right(Uuid().v1()));
   }
