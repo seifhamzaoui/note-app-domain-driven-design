@@ -11,6 +11,10 @@ abstract class ValueObject<T> {
     return other is ValueObject<T> && other.value == value;
   }
 
+  Either<ValueFailure, T> isFailureorNot() {
+    return value.fold((l) => left(l as ValueFailure), (r) => right(r));
+  }
+
   @override
   int get hashCode => value.hashCode;
 

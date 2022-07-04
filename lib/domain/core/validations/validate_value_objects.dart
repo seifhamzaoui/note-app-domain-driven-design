@@ -1,3 +1,4 @@
+import 'package:clean_archs/domain/notes/todo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:kt_dart/kt.dart';
@@ -34,7 +35,7 @@ Either<ValueFailure<KtList>, KtList> validateListToolong(
   if (inputList.size <= maxLength) {
     return right(inputList);
   } else {
-    return left(ValueFailure<KtList>.listTooLong(value: inputList, max: maxLength));
+    return left(ValueFailure.listTooLong(value: inputList, max: maxLength));
   }
 }
 
