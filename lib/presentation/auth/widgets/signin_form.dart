@@ -43,89 +43,92 @@ class SigninForm extends StatelessWidget {
         Scaffold.of(context).showSnackBar(snackBar);
       }
     }, builder: (_, state) {
-      return Form(
-        autovalidateMode: BlocProvider.of<SigninBloc>(context).state.showErrors
-            ? AutovalidateMode.always
-            : AutovalidateMode.disabled,
-        child: ListView(
-          children: [
-            const SizedBox(height: 20),
-            TextFormField(
-              enableInteractiveSelection: true,
-              autocorrect: false,
-              decoration: InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
-              onChanged: (value) {
-                BlocProvider.of<SigninBloc>(context).add(SigninEvent.emailChanged(value));
-              },
-              validator: (_) {
-                return BlocProvider.of<SigninBloc>(context).state.emailAdress.value.fold(
-                      (failure) =>
-                          failure.maybeMap(invalidEmail: (_) => "invalid Email", orElse: () {}),
-                      (r) => null,
-                    );
-              },
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              enableInteractiveSelection: true,
-              autocorrect: false,
-              obscureText: true,
-              decoration: InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: const Icon(Icons.password),
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
-              onChanged: (value) {
-                BlocProvider.of<SigninBloc>(context).add(SigninEvent.passwordChanged(value));
-              },
-              validator: (_) {
-                return BlocProvider.of<SigninBloc>(context).state.password.value.fold(
-                      (failure) => failure.maybeMap(
-                          invalidPassword: (_) => "password is invalid", orElse: () {}),
-                      (r) => null,
-                    );
-              },
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      BlocProvider.of<SigninBloc>(context)
-                          .add(SigninEvent.signInWithEmailAndPasswordPressed());
-                    },
-                    child: const Text(
-                      'Sign in',
-                      style: TextStyle(fontSize: 20),
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: Form(
+          autovalidateMode: BlocProvider.of<SigninBloc>(context).state.showErrors
+              ? AutovalidateMode.always
+              : AutovalidateMode.disabled,
+          child: ListView(
+            children: [
+              const SizedBox(height: 20),
+              TextFormField(
+                enableInteractiveSelection: true,
+                autocorrect: false,
+                decoration: InputDecoration(
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+                onChanged: (value) {
+                  BlocProvider.of<SigninBloc>(context).add(SigninEvent.emailChanged(value));
+                },
+                validator: (_) {
+                  return BlocProvider.of<SigninBloc>(context).state.emailAdress.value.fold(
+                        (failure) =>
+                            failure.maybeMap(invalidEmail: (_) => "invalid Email", orElse: () {}),
+                        (r) => null,
+                      );
+                },
+              ),
+              const SizedBox(height: 10),
+              TextFormField(
+                enableInteractiveSelection: true,
+                autocorrect: false,
+                obscureText: true,
+                decoration: InputDecoration(
+                    labelText: 'Password',
+                    prefixIcon: const Icon(Icons.password),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.circular(8))),
+                onChanged: (value) {
+                  BlocProvider.of<SigninBloc>(context).add(SigninEvent.passwordChanged(value));
+                },
+                validator: (_) {
+                  return BlocProvider.of<SigninBloc>(context).state.password.value.fold(
+                        (failure) => failure.maybeMap(
+                            invalidPassword: (_) => "password is invalid", orElse: () {}),
+                        (r) => null,
+                      );
+                },
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        BlocProvider.of<SigninBloc>(context)
+                            .add(SigninEvent.signInWithEmailAndPasswordPressed());
+                      },
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: TextButton(
-                    onPressed: () {
-                      BlocProvider.of<SigninBloc>(context)
-                          .add(SigninEvent.registerWithEmailAndPassword());
-                    },
-                    child: const Text('Register', style: TextStyle(fontSize: 20)),
+                  Expanded(
+                    child: TextButton(
+                      onPressed: () {
+                        BlocProvider.of<SigninBloc>(context)
+                            .add(SigninEvent.registerWithEmailAndPassword());
+                      },
+                      child: const Text('Register', style: TextStyle(fontSize: 20)),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              if (BlocProvider.of<SigninBloc>(context).state.isLoading)
+                const Center(
+                  child: LinearProgressIndicator(
+                    value: null,
                   ),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            if (BlocProvider.of<SigninBloc>(context).state.isLoading)
-              const Center(
-                child: LinearProgressIndicator(
-                  value: null,
-                ),
-              ),
-          ],
+            ],
+          ),
         ),
       );
     });
