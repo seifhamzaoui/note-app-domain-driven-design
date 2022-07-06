@@ -30,9 +30,10 @@ abstract class Note implements _$Note {
   Option<ValueFailure> get failureOption {
     return noteBody.isFailureorNot().andThen(todoItems.isFailureorNot()).fold(
           (l) => Some(l),
-          (r) => r.map((e) => e.todoName.value.isLeft()).filter((e) => e == true).toList()[0]
-              ? Some(ValueFailure.empty(''))
-              : none(),
+          (r) =>
+              r.map((e) => e.todoName.value.isLeft()).filter((e) => e == true).toList().isNotEmpty()
+                  ? Some(ValueFailure.empty(''))
+                  : none(),
         );
   }
 }

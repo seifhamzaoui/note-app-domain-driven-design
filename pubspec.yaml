@@ -24,6 +24,7 @@ dependencies:
   equatable: 
   firebase_auth: 
   firebase_core: 
+  cloud_firestore:
   flutter:
     sdk: flutter
   flutter_bloc: 

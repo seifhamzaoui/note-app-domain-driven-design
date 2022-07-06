@@ -1,4 +1,5 @@
 import 'package:clean_archs/domain/core/error/Valuefailure.dart';
+import 'package:clean_archs/domain/core/error/errors.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class ValueObject<T> {
@@ -22,4 +23,6 @@ abstract class ValueObject<T> {
   String toString() => 'ValueObject(value: $value)';
 
   bool isValid() => value.isRight();
+
+  T getorCrash() => value.fold((f) => throw InvalidEmailAndPasswordErrot(f.toString()), (r) => r);
 }
