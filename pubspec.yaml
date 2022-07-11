@@ -36,6 +36,7 @@ dependencies:
   kt_dart: ^0.10.0
   shared_preferences: 
   uuid: 
+  rxdart:
 
 dev_dependencies:
   auto_route_generator: 

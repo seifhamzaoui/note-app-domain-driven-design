@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:clean_archs/application/auth/auth_state_bloc/auth_state_bloc.dart';
 import 'package:clean_archs/presentation/auth/signin_page.dart';
-import 'package:clean_archs/presentation/home_page/home_page.dart';
+import 'package:clean_archs/presentation/notes/home_page.dart';
 import 'package:clean_archs/presentation/routes/router.gr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
